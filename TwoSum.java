@@ -8,27 +8,38 @@ public class TwoSum {
 
         int[] nums = {3, 3};
         int target = 6;
-        int dif = 0;
 
         HashMap<Integer, Integer> myNumbers = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < nums.length; i++) {
-            Integer put = myNumbers.put(nums[i], i);
-            System.out.println(myNumbers);
-            dif = target - nums[i];
-            System.out.println(dif);
-            if (myNumbers.get(dif) != null && myNumbers.size() > 1) {
-                System.out.println("["+i + "," + myNumbers.get(dif)+"]");
+            myNumbers.put(nums[i], i);
+            int dif = target - nums[i];
+            if (myNumbers.containsKey(dif)) {
+                System.out.println("[" + i + "," + myNumbers.get(dif) + "]");
                 break;
-            }else {
-                System.out.println("searching...");
             }
+            myNumbers.put(nums[i], i);
+            System.out.println(myNumbers);
+//            System.out.println(dif);
         }
-//        for (int i = 0; i < myNumbers.size(); i++) {
-//            if (target - myNumbers.get(i) = 0)
-//        }
 
-        System.out.println(myNumbers);
+//        System.out.println(myNumbers);
+
+
 
     }
 }
+//class Solution {
+//    public int[] twoSum(int[] nums, int target) {
+//        Map<Integer, Integer> myNums = new HashMap<>();
+//
+//        for (int i = 0; i < nums.length; i++) {
+//            int complement = target - nums[i];
+//            if (myNums.containsKey(complement)) {
+//                return new int[] { myNums.get(complement), i };
+//            }
+//            myNums.put(nums[i], i);
+//        }
+//        return new int[0];
+//    }
+//}
