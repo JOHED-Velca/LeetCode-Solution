@@ -5,29 +5,30 @@ import java.util.HashMap;
 
 public class TwoSum {
     public static void main(String[] args) {
-        HashMap<String, String> capitalCities = new HashMap<String, String>();
 
-        capitalCities.put("England", "London");
-        capitalCities.put("Peru", "Lima");
-        capitalCities.put("Canada", "Ottawa");
-        capitalCities.put("USA", "Washington");
-        capitalCities.put("Chile", "Santiago");
+        int[] nums = {3, 3};
+        int target = 6;
+        int dif = 0;
 
-        for (String i : capitalCities.keySet()) {
-            System.out.println(i);
+        HashMap<Integer, Integer> myNumbers = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < nums.length; i++) {
+            Integer put = myNumbers.put(nums[i], i);
+            System.out.println(myNumbers);
+            dif = target - nums[i];
+            System.out.println(dif);
+            if (myNumbers.get(dif) != null && myNumbers.size() > 1) {
+                System.out.println("["+i + "," + myNumbers.get(dif)+"]");
+                break;
+            }else {
+                System.out.println("searching...");
+            }
         }
+//        for (int i = 0; i < myNumbers.size(); i++) {
+//            if (target - myNumbers.get(i) = 0)
+//        }
 
-        System.out.println("--------------------------------");
+        System.out.println(myNumbers);
 
-        for (String i : capitalCities.values()) {
-            System.out.println(i);
-        }
-        System.out.println("--------------------------------");
-        System.out.println(capitalCities);
-        System.out.println(capitalCities.size());
-        capitalCities.remove("Chile");
-        System.out.println(capitalCities);
-        System.out.println(capitalCities.get("Peru"));
-        System.out.println(capitalCities.size());
     }
 }
