@@ -6,27 +6,20 @@ import java.util.HashMap;
 public class TwoSum {
     public static void main(String[] args) {
 
-        int[] nums = {3, 3};
+        int[] nums = {3, 2, 4};
         int target = 6;
 
         HashMap<Integer, Integer> myNumbers = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < nums.length; i++) {
-            myNumbers.put(nums[i], i);
             int dif = target - nums[i];
             if (myNumbers.containsKey(dif)) {
-                System.out.println("[" + i + "," + myNumbers.get(dif) + "]");
-                break;
+//                return new int[] { myNumbers.get(dif), i };
+                System.out.println("[" + myNumbers.get(dif) + "," + i + "]");
             }
             myNumbers.put(nums[i], i);
-            System.out.println(myNumbers);
-//            System.out.println(dif);
+
         }
-
-//        System.out.println(myNumbers);
-
-
-
     }
 }
 //class Solution {
