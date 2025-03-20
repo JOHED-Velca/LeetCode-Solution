@@ -14,7 +14,6 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int dif = target - nums[i];
             if (myNumbers.containsKey(dif)) {
-//                return new int[] { myNumbers.get(dif), i };
                 System.out.println("[" + myNumbers.get(dif) + "," + i + "]");
             }
             myNumbers.put(nums[i], i);
