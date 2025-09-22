@@ -1,60 +1,91 @@
-class Node:
-    def __init__(self, data): # Constructor to initialize the node
-        self.data = data # Value of the node
-        self.next = None # Pointer to the next node
+class node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
         
-    def _repr_(self): # String representation of the node
-        return self.data # Return the data of the node
-
-class LinkedList: # Define a linked list class
-    def __init__(self): # Constructor to initialize the linked list
-        self.head = None # Initialize the head of the linked list
-    
-    def append(self, data): # Method to append a new node to the linked list
-        new_node = Node(data) # Create a new node with the given data
-        if self.head is None: # If the linked list is empty
-            self.head = new_node # Set the new node as the head and 
-            return 
-        current = self.head # Start from the head node
-        while current.next: # Traverse to the end of the linked list
-            current = current.next # Move to the next node
-        current.next = new_node # Append the new node at the end of the linked list
+class LinkedList:
+    def __init__(self):
+        self.head = node()
         
-    def printList(self): # Method to print the linked list
-        current = self.head # Start from the head node
-        while current: # Traverse the linked list
-            print(current.data) # Print the data of the current node
-            current = current.next # Move to the next node
-        # print("None") # Indicate the end of the list
+    def append(self, data):
+        new_node = node(data)
+        cur = self.head
+        while cur.next != None:
+            cur = cur.next
+        cur.next = new_node
+        
+    def lenght(self):
+        cur = self.head
+        total = 0
+        while cur.next != None:
+            total += 1
+            cur = cur.next
+        return total
     
-    def __repr__(self): # String representation of the linked list
-        node = self.head # Start from the head node
-        nodes = [] # List to store the string representation of nodes
-        while node is not None: # Traverse the linked list
-            nodes.append(str(node.data)) # Append the data of the current node to the list
-            node = node.next # Move to the next node
-        nodes.append("None") # Append "None" to indicate the end of the list
-        return " -> ".join(nodes) # Join the node data with " -> " and return as a string
-            
-def findLowestValue(head):
-    minValue = head.data # Initialize minValue with the head node's data
-    currentNode = head.next # Start from the next node
-    while currentNode: # Traverse the linked list
-        if currentNode.data < minValue: # If current node's data is less than minValue
-            minValue = currentNode.data # Update minValue
-        currentNode = currentNode.next # Move to the next node
-    return minValue # Return the lowest value found
+    def display(self):
+        elems = []
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            elems.append(cur_node.data)
+        print("------Original list------")
+        print(elems)
+        print("------Reversed List------")
+        elems.reverse()
+        print(elems)
+        print("==========================")
+    
+    def convert_to_int(self):
+        digits = []
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            digits.append(cur_node.data)
+        digits.reverse()
+        number = int("".join(map(str, digits)))
+        # print(number)
+        return number
 
+def convert_to_list2(number):
+    digits = [int(d) for d in str(number)]
+    digits.reverse()
+    print(digits)
+
+
+#Case 1
 list1 = LinkedList()
 list1.append(2)
 list1.append(4)
 list1.append(3)
 
-# Method 1: Using the printList() method
-print("Using printList() method:")
-list1.printList()
+list2 = LinkedList()
+list2.append(5)
+list2.append(6)
+list2.append(4)
 
-# Method 2: Using the __repr__ method
-print("Using print(list1):")
-print(list1)
+#Case 2
+list3 = LinkedList()
+list3.append(0)
+list4 = LinkedList()
+list4.append(0)
 
+#Case 3
+list5 = LinkedList()
+list5.append(9)
+list5.append(9)
+list5.append(9)
+list5.append(9)
+list5.append(9)
+list5.append(9)
+list5.append(9)
+list6 = LinkedList()
+list6.append(9)
+list6.append(9)
+list6.append(9)
+list6.append(9)
+
+total = list5.convert_to_int() + list6.convert_to_int()
+print("------Sum of two numbers------")
+print(total)
+print("-------Convert to list--------")
+convert_to_list2(total)
