@@ -8,7 +8,7 @@ from typing import Optional
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]: # 
-        dummy = ListNode()   # sentinel head for the result list
+        dummy = ListNode()   # dummy node to simplify edge cases (used to avoid checking if head is None)
         cur = dummy # pointer to construct the new list
         carry = 0 # carry for sum exceeding 10
 
@@ -17,7 +17,7 @@ class Solution:
             v2 = l2.val if l2 else 0 # get value from l2 or 0 if l2 is exhausted
 
             total = v1 + v2 + carry # sum the values and carry
-            carry, digit = divmod(total, 10) # update carry and the digit to store
+            carry, digit = divmod(total, 10) # update carry and the digit to store in the node (10's place)
 
             cur.next = ListNode(digit) # create a new node with the digit
             cur = cur.next # move to the next node
